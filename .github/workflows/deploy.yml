@@ -24,7 +24,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE_TAG=gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/cloud-run-source-deploy/deployment-demo:$GITHUB_SHA
+          IMAGE_TAG=us-central1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_PROJECT }}/cloud-run-source-deploy/deployment-demo:$GITHUB_SHA
           docker build -t $IMAGE_TAG .
           gcloud auth configure-docker --quiet
           docker push $IMAGE_TAG
@@ -32,7 +32,7 @@ jobs:
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy deployment-demo \
-            --image gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/deployment-demo:$GITHUB_SHA \
+            --image us-central1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_PROJECT }}/deployment-demo:$GITHUB_SHA \
             --region us-central1 \
             --platform managed \
             --allow-unauthenticated \
