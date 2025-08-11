@@ -22,7 +22,7 @@ jobs:
       - name: Build and push Docker image
         run: |
           # Set your Docker image tag (can be based on commit hash or version)
-          IMAGE_TAG=gcr.io/${{ secrets.GCP_PROJECT_ID }}/deployment-demo:$GITHUB_SHA
+          IMAGE_TAG=gcr.io/${{ secrets.GCP_CLOUD_PROJECT }}/deployment-demo:$GITHUB_SHA
           
           # Build the Docker image
           docker build -t $IMAGE_TAG .
